@@ -150,6 +150,23 @@ end
         columns=(:root, :leaf, :sheath, :scape, :bulb),
         parameter
     )
+    
+    bbch(pt,dp) => begin
+        string(Int(pt[dp].bbch),base = 10, pad = 3)
+    end ~ track::String
+    
+    bbch_table => Dict(
+        "000" => "Dormant bulb",
+        "100" => "Advanced whip stage: whip begins to die off",
+        "106" => "6th leaf (blade) folded clearly visible (>3 cm); old leaves unfolded",
+        "401" => "Leaf bases begin to thicken or extend",
+        "404" => "40% of expected bulbs diameter reached",
+        "407" => "70% of the expected shaft length and diameter reached",
+        "409" => "100% of expected bulbs diameter reached"
+    ) ~preserve::Dict
+    
+    bbch_description(bbch_table, bbch) => bbch_table[bbch] ~track::String
+    
 
     root_carbon(total_carbon, pt, dp) => begin
         total_carbon * pt[dp].root
