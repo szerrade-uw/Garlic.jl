@@ -146,8 +146,8 @@ end
           407 0.05 0.00   0.00  0.00 0.95 ; # period after scape removal (scape appeared and subsequently removed)
           409 0.00 0.00   0.00  0.00 0.00 ; # dead
     ] ~ tabulate(
-        rows=(:bbch, :seed, :vegetative, :bulb_growth_before_scape_appearance, :bulb_growth_after_scape_appearance, :bulb_growth_after_scape_removal, :dead),
-        columns=(:root, :leaf, :sheath, :scape, :bulb),
+        rows=(:seed, :vegetative, :bulb_growth_before_scape_appearance, :bulb_growth_after_scape_appearance, :bulb_growth_after_scape_removal, :dead),
+        columns=(:bbch, :root, :leaf, :sheath, :scape, :bulb),
         parameter
     )
     
