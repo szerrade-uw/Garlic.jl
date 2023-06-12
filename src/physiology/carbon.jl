@@ -140,7 +140,7 @@ end
 
     pt: partitioning_table => [
         # root leaf sheath scape bulb
-          000 0.00 0.00   0.00  0.00 0.00 ; # seed garlic before germination
+          800 0.00 0.00   0.00  0.00 0.00 ; # seed garlic before germination
           100 0.35 0.30   0.25  0.00 0.10 ; # vegetative stage between germination and scape initiation
           401 0.15 0.15   0.10  0.25 0.35 ; # period between scape initiation and scape appearance
           404 0.05 0.10   0.00  0.35 0.50 ; # period after scape appearance before removal (scape stays intact)
@@ -152,9 +152,9 @@ end
         parameter
     )
     
-    bbch_2(pt,dp) => begin
-        string(Int(pt[dp].bbch),base = 10, pad = 3)
-    end ~ track::String
+    #bbch(pt,dp) => begin
+    #    string(Int(pt[dp].bbch),base = 10, pad = 3)
+    #end ~ track::String
     
     bbch_table => Dict(
         "000" => "Dormant bulb",
