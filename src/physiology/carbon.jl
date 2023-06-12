@@ -19,7 +19,7 @@ end
     green_leaf_ratio ~ hold
 
     dp(pheno.development_phase): development_phase ~ track::sym
-    bbch(pheno.bbch)~track::String
+    bbch(pheno.bbch_stage)~track::String
 
     C_conc: carbon_concentration => begin
         # maize: 40% C, See Kim et al. (2007) EEB
@@ -148,7 +148,7 @@ end
           100 0.35 0.30   0.25  0.00 0.10 ; # vegetative stage between germination and scape initiation
           401 0.15 0.15   0.10  0.25 0.35 ; # period between scape initiation and scape appearance
           404 0.05 0.10   0.00  0.35 0.50 ; # period after scape appearance before removal (scape stays intact)
-          407 0.05 0.00   0.00  0.00 0.95 ; # period after scape removal (scape appeared and subsequently removed)
+          404 0.05 0.00   0.00  0.00 0.95 ; # period after scape removal (scape appeared and subsequently removed)
           409 0.00 0.00   0.00  0.00 0.00 ; # dead
     ] ~ tabulate(
         rows=(:seed, :vegetative, :bulb_growth_before_scape_appearance, :bulb_growth_after_scape_appearance, :bulb_growth_after_scape_removal, :dead),
