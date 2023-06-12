@@ -98,6 +98,20 @@ include("death.jl")
             :bulb_growth_after_scape_removal
         end
     end ~ track::sym
+    
+    bbch_stage(germinated, floral_initiated, dead, scape_removed, scape_appeared) => begin
+        if !germinated
+            "000"
+        elseif !floral_initiated
+            "100"
+        elseif dead
+            "409"
+        elseif !scape_appeared
+            "401"
+        else
+            "404"
+        end
+    end ~ track::sym
 end
 
 @system PhenologyController(Controller) begin
