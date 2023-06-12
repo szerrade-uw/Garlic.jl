@@ -152,9 +152,9 @@ end
         parameter
     )
     
-    #bbch(pt,dp) => begin
-    #    string(Int(pt[dp].bbch),base = 10, pad = 3)
-    #end ~ track::String
+    bbch_2(pt,dp) => begin
+        string(Int(pt[dp].bbch),base = 10, pad = 3)
+    end ~ track::String
     
     bbch_table => Dict(
         "000" => "Dormant bulb",
