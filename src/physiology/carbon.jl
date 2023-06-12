@@ -19,6 +19,7 @@ end
     green_leaf_ratio ~ hold
 
     dp(pheno.development_phase): development_phase ~ track::sym
+    bbch(pheno.bbch)~track::String
 
     C_conc: carbon_concentration => begin
         # maize: 40% C, See Kim et al. (2007) EEB
@@ -151,9 +152,9 @@ end
         parameter
     )
     
-    bbch(pt,dp) => begin
-        string(Int(pt[dp].bbch),base = 10, pad = 3)
-    end ~ track::String
+    #bbch(pt,dp) => begin
+    #    string(Int(pt[dp].bbch),base = 10, pad = 3)
+    #end ~ track::String
     
     bbch_table => Dict(
         "000" => "Dormant bulb",
