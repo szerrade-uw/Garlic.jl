@@ -111,7 +111,7 @@ include("death.jl")
         else
             "404"
         end
-    end ~ track::sym
+    end ~ track::String
 end
 
 @system PhenologyController(Controller) begin
