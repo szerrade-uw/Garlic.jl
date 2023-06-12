@@ -137,6 +137,10 @@ end
     total_carbon(c=carbon_available, Yg) => begin
         Yg * c # gCH2O partitioned to shoot/root
     end ~ track(u"g/d")
+    
+    test => begin
+        1
+    end ~ preserve(parameter)
 
     pt: partitioning_table => [
         # root leaf sheath scape bulb
