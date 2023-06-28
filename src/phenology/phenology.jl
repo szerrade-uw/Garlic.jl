@@ -81,7 +81,7 @@ include("death.jl")
     #     end
     # end ~ track::str
 
-    development_phase(germinated, floral_initiated, dead, scape_removed, scape_appeared) => begin
+  development_phase(germinated, floral_initiated, dead, scape_removed, scape_appeared) => begin
         if !germinated
             :seed
         elseif !floral_initiated
@@ -98,20 +98,34 @@ include("death.jl")
             :bulb_growth_after_scape_removal
         end
     end ~ track::sym
-    
+
     bbch_stage(germinated, floral_initiated, dead, scape_removed, scape_appeared) => begin
         if !germinated
-            "000"
+            :BBCH000
         elseif !floral_initiated
-            "100"
+            :BBCH100
         elseif dead
-            "409"
+            :BBCH409
         elseif !scape_appeared
-            "401"
+            :BBCH401
         else
-            "404"
+            if !scape_removed
+                :BBCH404
+            else
+                :BBCH404R
+            end
         end
-    end ~ track::String
+    end ~ track::sym
+    
+    bbch_table => Dict(
+        :BBCH000 => "Dry bulb",
+        :BBCH100 => "Advanced whip stage: whip begins to die off",
+        :BBCH106 => "6th leaf (blade) folded clearly visible (>3 cm); old leaves unfolded",
+        :BBCH401 => "Leaf bases begin to thicken or extend",
+        :BBCH404 => "40% of expected bulbs diameter reached",
+        :BBCH407 => "70% of the expected shaft length and diameter reached",
+        :BBCH409 => "100% of expected bulbs diameter reached"
+    ) ~preserve::Dict
 end
 
 @system PhenologyController(Controller) begin
